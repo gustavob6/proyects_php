@@ -228,6 +228,6 @@ if(isset($_POST["add"])){
 </form>
 <a href="index.php">
          <button class="btn">Pagina Principal</button>
-        </a>
+</a>
 </body>
 </html>
