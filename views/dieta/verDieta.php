@@ -50,51 +50,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./verDieta.css">
+    <link rel="stylesheet" href="./dieta.css">
     <title>Dieta</title>
 </head>
 <body>
     <div class="container">
         <div class="container-item">
-            <div class="card">
-                <div class="card-title">
-                    <p class="card-h5"><?php echo $dia?></p>
-                    <p><?php echo $fecha;?></p>
+                <div class="title">
+                    <p class="text-day"><?php echo $dia?></p>
+                    <p class="text-date"><?php echo $fecha;?></p>
                 </div>
-                <hr class="solid">    
                 <?php foreach ($registros as $key):?>
-                
                 <?php if($key["TIPO"] !== $tipo): ?>
                 <?php $tipo = $key["TIPO"] ?>
-                <div class="card-body">    
-                    <p class="card-text text-uppercase"><?php echo $key["TIPO"]?></p> 
+                <div class="body">    
+                    <p class="tipo-text"><?php echo $key["TIPO"]?></p> 
                 </div>
                 <?php endif;?>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><?php echo $key["ALIMENTO"]?></li>
-                </ul>
+                <div class="list-group">
+                    <div class="list-item"><?php echo $key["ALIMENTO"]?></div>
+                </div>
                 <?php endforeach; ?>
-                <div class="calorias"><?php echo $count?></div>
-                <div class="card-btn">
+                <div class="list-group">
+                    <div class="list-item"><?php echo $count?> kcal</div>
+                </div>
+                <div class="btn-mood">
                     <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $siguiente?>">
                         <button class="btn">Siguiente</button>
                     </a>
+                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $anterior?>">
+                        <button class="btn">Volver</button>
+                    </a>
+                </div>
+                <div class="container-btn">
                     <a href="../../index.php">
                         <button class="btn">Pagina Principal</button>
                     </a>
                     <a href="../../forms/dieta/editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
                     <button class="btn">Editar Dia</button>
-                    </a>
-                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $anterior?>">
-                        <button class="btn">Volver</button>
-                    </a>   
+                    </a> 
                     <a href="detalles.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
                         <button class="btn">Detalles</button>
                     </a> 
                 </div>
             </div>
-
-        </div>
     </div>
 </body>
 </html>

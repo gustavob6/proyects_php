@@ -24,35 +24,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./verDieta.css">
+    <link rel="stylesheet" href="./detalles.css">
     <title>Detalles</title>
 </head>
 <body>
     <div class="container">
         <div class="container-item">
-            <div class="card">
-                <div class="card-title">
-                    <p class="card-h5"><?php echo $dia?></p>
-                </div>
-                <hr class="solid">    
+                <div class="title">
+                    <p class="text-day"><?php echo $dia?></p>
+                </div>    
                 <?php foreach ($registros as $key):?>
                 
                 <?php if($key["TIPO"] !== $tipo): ?>
                 <?php $tipo = $key["TIPO"] ?>
-                <div class="card-body">    
-                    <p class="card-text text-uppercase"><?php echo $key["TIPO"]?></p> 
+                <div class="body">    
+                    <p class="text-tipo"><?php echo $key["TIPO"]?></p> 
                 </div>
                 <?php endif;?>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><?php echo $key["ALIMENTO"]?>
-                        <p><?php echo $key["VITAMINAS"]?></p>
-                        <p><?php echo $key["NUTRIENTES"]?></p>
-                        <p><?php echo $key["GRAMOS"]?></p>
-                    </li>
-                </ul>
+                <div class="list-group">
+                    <div class="list-item">
+                        <div class="item"><?php echo $key["ALIMENTO"]?></div>
+                        <div class="item"> <p><?php echo $key["VITAMINAS"]?></p></div>
+                        <div class="item"><p><?php echo $key["NUTRIENTES"]?></p></div>
+                        <div class="item"><p><?php echo $key["GRAMOS"]?> gramos</p></div>
+                    </div>
+                </div>
                 <?php endforeach; ?>
-                <div class="calorias"><?php echo $count?></div>
-                <div class="card-btn">
+                <div class="list-group">
+                    <div class="list-item"><?php echo $count?> kcal</div>
+                </div>
+                <div class="container-btn">
                     <a href="../../index.php">
                         <button class="btn">Pagina Principal</button>
                     </a>
@@ -60,7 +61,6 @@
                         <button class="btn">Volver</button>
                     </a>   
                 </div>
-            </div>
 
         </div>
     </div>
