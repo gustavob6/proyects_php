@@ -28,6 +28,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="enfermedad.css">
     <title>Lista de enfermedades</title>
 </head>
 <body>
@@ -56,13 +57,13 @@
                     <option value="9">Huevos</option>
                     <option value="10">Tomate</option>
                 </select>
-            </div>
-            <div>
-                <button type="submit" name="add">Añadir</button>
+            </div> 
+            <div class="container-btn">
+                <button type="submit" class="btn" name="add">Añadir</button>
             </div>
         </form>
         <a href="../../forms/registros/datos.php?dni=<?php echo $dni?>">
-            <button class="button btn-create">Volver</button>
+            <button class="btn btn-create">Volver</button>
         </a>
     </div>
 </body>

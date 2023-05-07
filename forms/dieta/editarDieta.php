@@ -73,15 +73,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Modificar Dieta</title>
 </head>
 <body>
 <form name="form1" action="editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>" method="post">
+<div class="container">
 <h3><?php echo $dia ?></h3>
-    <div class="Desayuno">
+    <div class="items">
         <label for="color">Desayuno</label>
+        <div class="desayuno">
         <select name="desayuno1" id="color" required>
-            <option value="">--- Elige Alimento ---</option>
+            <option value="" disabled selected>--- Elige Alimento ---</option>
             <option value="2">Pollo</option>
             <option value="1">Espinaca</option>
             <option value="3">Calabacin</option>
@@ -98,7 +101,9 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" name="gdesayuno1" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="gdesayuno1" min="10" max="200" required class="form-control">
+        </div>
+        <div class="desayuno1">
         <select name="desayuno2" id="color" required>
         <option value="">--- Elige Alimento ---</option>
             <option value="2">Pollo</option>
@@ -117,10 +122,10 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" name="gdesayuno2" min="10" max="200" required class="form-control">
-    </div>
-    <div class="almuerzo">
+        <input type="number" placeholder="gr"name="gdesayuno2" min="10" max="200" required class="form-control">
+        </div>
         <label for="color">Almuerzo</label>
+        <div class="almuerzo">
         <select name="almuerzo1" id="color" required>
         <option value="">--- Elige Alimento ---</option>
             <option value="2">Pollo</option>
@@ -139,7 +144,9 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" name="galmuerzo1" min="10" max="200" required class="form-control">
+        <input type="number"placeholder="gr" name="galmuerzo1" min="10" max="200" required class="form-control">
+        </div>
+        <div class="almuerzo1">
         <select name="almuerzo2" id="color" required>
         <option value="">--- Elige Alimento ---</option>
             <option value="2">Pollo</option>
@@ -158,10 +165,10 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" name="galmuerzo2" min="10" max="200" required class="form-control">
-    </div>
-    <div class="cena">
+        <input type="number" placeholder="gr"name="galmuerzo2" min="10" max="200" required class="form-control">
+        </div>
     <label for="color">Cena</label>
+    <div class="cena">
         <select name="cena1" id="color" required>
         <option value="">--- Elige Alimento ---</option> 
             <option value="2">Pollo</option>
@@ -180,7 +187,9 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" name="gcena1" min="10" max="200" required class="form-control">
+        <input type="number"placeholder="gr" name="gcena1" min="10" max="200" required class="form-control">
+        </div>
+        <div class="cena1">
         <select name="cena2" id="color" required>
         <option value="">--- Elige Alimento ---</option>
             <option value="2">Pollo</option>
@@ -199,15 +208,19 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" name="gcena2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr" name="gcena2" min="10" max="200" required class="form-control">
+        </div>
     </div>
     
     <div>
-        <button type="submit" name="update">Actualizar</button>
+        <button type="submit" name="update" class="btn">Actualizar</button>
+    </div>
     </div>
 </form>
+<div class="container-btn">
 <a href="../../index.php">
          <button class="btn">Pagina Principal</button>
         </a>
+        </div>
 </body>
 </html>

@@ -26,7 +26,7 @@ if(isset($_POST["add"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./cusstom.css">
+    <link rel="stylesheet" href="./custom1.css">
     <title>Formulario</title>
 </head>
 <body>
@@ -63,9 +63,11 @@ if(isset($_POST["add"])){
                         <button type="submit" name="add"class="button btnCreate">Registrar Paciente</button>
                     </div>
                 </form>
+                <div class="container-btn">
                 <a href="../../index.php">
                     <button class="button">Volver</button>
                 </a>
+                </div>
     </div>
 </body>
 </html>
