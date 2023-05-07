@@ -1,5 +1,6 @@
 <?php 
-    require_once("../database.php");
+    require_once("../../database/database.php");
+    require_once("../../database/consultas.php");
     if(isset($_GET["dni"])){
         $dni = $_GET["dni"];
     }
@@ -49,8 +50,8 @@
                         <input type="number" min="80" max="240" class="form-control" value="<?php echo $key["altura"] ?>" disabled>
                     </div>
                     <div class="item">
-                    <label for="Cedula" class="label">Masa</label>
-                        <input type="number" min="50" max="200" class="form-control" value="<?php echo $key["masa_muscular"] ?>" disabled>
+                    <label for="Cedula" class="label">Masa Muscular %</label>
+                        <input type="number" min="05" max="100" class="form-control" value="<?php echo $key["masa_muscular"] ?>" disabled>
                     </div>   
                     <div class="item">
                     <label for="Cedula" class="label">Actividad</label>
@@ -58,10 +59,10 @@
                     </div>      
                 </form>
                     <div class="item">
-                    <a href="../">
+                    <a href="../../">
                         <button class="button btn-create">Volver</button>
                     </a>
-                    <a href="../enfermedades.php?dni=<?php echo $dni?>">
+                    <a href="../../views/enfermedad/enfermedades.php?dni=<?php echo $dni?>">
                         <button class="button btn-create">Enfermedades</button>
                     </a>
                     </div>

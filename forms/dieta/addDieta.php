@@ -1,30 +1,51 @@
-<?php
-  require_once("database.php");
-  if(isset($_GET["dni"]) && isset($_GET["dia"])){
+<?php 
+require_once("../../database/database.php");
+require_once("../../database/consultas.php");
+
+if(isset($_GET["dni"])){
     $dni = $_GET["dni"];
-    $dia = $_GET["dia"];
 
-    if($_GET["dia"] == "Lunes"){
-        $num_dia = 1;
-    }else if($_GET["dia"] == "Martes"){
-        $num_dia = 2;
-    }else if($_GET["dia"] == "Miercoles"){
-        $num_dia = 3;
-    }else if($_GET["dia"] == "Jueves"){
-        $num_dia = 4;
-    }else if($_GET["dia"] == "Viernes"){
-        $num_dia = 5;
-    }else if($_GET["dia"] == "Sabado"){
-        $num_dia = 6;
-    }else if($_GET["dia"] == "Domingo"){
-        $num_dia = 7;
+    $num_dia = 1;
+    $siguiente = "Martes";
+    $dia = "Lunes";
+
+    $registrosDias = array();
+	$registros1=$conn->prepare($sql2);
+	$registros1->execute(array(":dni"=>$dni));
+	$registrosDias=$registros1->fetchAll();
+
+    foreach($registrosDias as $key){
+        if($key["DIA"] == "Lunes"){
+            $num_dia = 2;
+            $siguiente = "Miercoles";
+            $dia = "Martes";
+        }else if($key["DIA"] == "Martes"){
+            $num_dia = 3;
+            $siguiente = "Jueves";
+            $dia = "Miercoles";
+        }else if($key["DIA"] == "Miercoles"){
+            $num_dia = 4;
+            $siguiente = "Viernes";
+            $dia = "Jueves";
+        }else if($key["DIA"] == "Jueves"){
+            
+            $num_dia = 5;
+            $siguiente = "Sabado";
+            $dia = "Viernes";
+        }else if($key["DIA"] == "Viernes"){
+            $num_dia = 6;
+            $siguiente = "Domingo";
+            $dia = "Sabado";
+        }else if($key["DIA"] == "Sabado"){
+            $num_dia = 7;
+            $dia = "Domingo";
+        }else if($key["DIA"] == "Domingo"){
+            echo "Ya colocaste todo";
+        }      
     }
-}
-
-  if(isset($_POST["update"])){
-    $sql1="DELETE FROM `dietas` WHERE id_dieta='$dni' and dia_id = '$num_dia'";
-    $conn->query($sql1);
-
+}                                                                                       
+                     
+if(isset($_POST["add"])){
     $desayuno1 = $_POST["desayuno1"];
     $desayuno2 = $_POST["desayuno2"];
     $almuerzo1 = $_POST["almuerzo1"]; 
@@ -38,12 +59,12 @@
     $gcena1 = $_POST["gcena1"];
     $gcena2 = $_POST["gcena2"];
 
-    $sql = "INSERT INTO dietas VALUES   (:dni,:dia,:tipo1,:desayuno1,:gdesayuno1,NOW()),
-                                        (:dni,:dia,:tipo1,:desayuno2,:gdesayuno2,NOW()),
-                                        (:dni,:dia,:tipo2,:almuerzo1,:galmuerzo1,NOW()),
-                                        (:dni,:dia,:tipo2,:almuerzo2,:galmuerzo2,NOW()),
-                                        (:dni,:dia,:tipo3,:cena1,:gcena1,NOW()),
-                                        (:dni,:dia,:tipo3,:cena2,:gcena2,NOW())";
+    $sql = "INSERT INTO dietas VALUES   (:dni,:dia,:tipo1,:desayuno1,:gdesayuno1,NULL),
+                                        (:dni,:dia,:tipo1,:desayuno2,:gdesayuno2,NULL),
+                                        (:dni,:dia,:tipo2,:almuerzo1,:galmuerzo1,NULL),
+                                        (:dni,:dia,:tipo2,:almuerzo2,:galmuerzo2,NULL),
+                                        (:dni,:dia,:tipo3,:cena1,:gcena1,NULL),
+                                        (:dni,:dia,:tipo3,:cena2,:gcena2,NULL)";
 
     $result=$conn->prepare($sql);  
     $result->execute(array(":dni"=>$dni,":dia"=>$num_dia,
@@ -61,7 +82,7 @@
                             ":gcena1"=>$gcena1,
                             ":gcena2"=>$gcena2));
 
-                            header("Location:./verDieta.php?dni={$dni}&dia={$dia}");                        
+                            header("Location:./addDieta.php?dni={$dni}");                        
                     
 }
 ?>
@@ -72,15 +93,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar Dieta</title>
+    <title>Añadir Dieta</title>
 </head>
 <body>
-<form name="form1" action="editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>" method="post">
+<form name="form1" action="addDieta.php?dni=<?php echo $dni?>" method="post">
 <h3><?php echo $dia ?></h3>
     <div class="Desayuno">
         <label for="color">Desayuno</label>
         <select name="desayuno1" id="color" required>
-            <option value="">--- Elige Alimento ---</option>
+            <option value="" disabled selected>--- Elige Alimento ---</option>
             <option value="2">Pollo</option>
             <option value="1">Espinaca</option>
             <option value="3">Calabacin</option>
@@ -202,11 +223,11 @@
     </div>
     
     <div>
-        <button type="submit" name="update">Actualizar</button>
+        <button type="submit" name="add">Add</button>
     </div>
 </form>
-<a href="index.php">
+<a href="../../index.php">
          <button class="btn">Pagina Principal</button>
-        </a>
+</a>
 </body>
 </html>

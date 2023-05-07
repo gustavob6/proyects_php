@@ -1,31 +1,10 @@
 <?php
-    require_once("database.php");
-    require_once("consultas.php");
+    require_once("../../database/database.php");
+    require_once("../../database/consultas.php");
 
     if(isset($_GET["dni"]) && isset($_GET["dia"])){
         $dni = $_GET["dni"];
         $dia = $_GET["dia"];
-        if($_GET["dia"] == "Lunes"){
-            $anterior = "Lunes";
-            $siguiente = "Martes";
-        }else if($_GET["dia"] == "Martes"){
-            $anterior = "Lunes";
-            $siguiente = "Miercoles";
-        }else if($_GET["dia"] == "Miercoles"){
-            $anterior = "Martes";
-            $siguiente = "Jueves";
-        }else if($_GET["dia"] == "Jueves"){
-            $anterior = "Miercoles";
-            $siguiente = "Viernes";
-        }else if($_GET["dia"] == "Viernes"){
-            $anterior = "Jueves";
-            $siguiente = "Sabado";
-        }else if($_GET["dia"] == "Sabado"){
-            $anterior = "Viernes";
-            $siguiente = "Domingo";
-        }else if($_GET["dia"] == "Domingo"){
-            $anterior = "Sabado";
-        }
     }
 
     $registros1=$conn->prepare($sql);
@@ -36,12 +15,7 @@
 
     $calorias = $conn->prepare($sql1);
     $calorias->execute(array(":dia"=>$dia,":dni"=>$dni));
-    $count = $calorias->fetchColumn();
-    $fecha = " ";
-    
-    foreach($registros as $key){
-        $fecha = $key["FECHA"];
-    }
+    $count = $calorias->fetchColumn();    
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./verDieta.css">
-    <title>Dieta</title>
+    <title>Detalles</title>
 </head>
 <body>
     <div class="container">
@@ -59,7 +33,6 @@
             <div class="card">
                 <div class="card-title">
                     <p class="card-h5"><?php echo $dia?></p>
-                    <p><?php echo $fecha;?></p>
                 </div>
                 <hr class="solid">    
                 <?php foreach ($registros as $key):?>
@@ -71,21 +44,19 @@
                 </div>
                 <?php endif;?>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><?php echo $key["ALIMENTO"]?></li>
+                    <li class="list-group-item"><?php echo $key["ALIMENTO"]?>
+                        <p><?php echo $key["VITAMINAS"]?></p>
+                        <p><?php echo $key["NUTRIENTES"]?></p>
+                        <p><?php echo $key["GRAMOS"]?></p>
+                    </li>
                 </ul>
                 <?php endforeach; ?>
                 <div class="calorias"><?php echo $count?></div>
                 <div class="card-btn">
-                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $siguiente?>">
-                        <button class="btn">Siguiente</button>
-                    </a>
-                    <a href="index.php">
+                    <a href="../../index.php">
                         <button class="btn">Pagina Principal</button>
                     </a>
-                    <a href="editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
-                    <button class="btn">Editar Dia</button>
-                    </a>
-                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $anterior?>">
+                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
                         <button class="btn">Volver</button>
                     </a>   
                 </div>

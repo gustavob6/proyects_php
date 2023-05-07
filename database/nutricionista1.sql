@@ -44,6 +44,18 @@ INSERT INTO `alimentos` VALUES (1,'Espinaca',23,'A,C,K,E','Ácido fólico, calci
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `calcular_edad`
+--
+
+DROP TABLE IF EXISTS `calcular_edad`;
+/*!50001 DROP VIEW IF EXISTS `calcular_edad`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `calcular_edad` AS SELECT 
+ 1 AS `EDAD`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary view structure for view `caloriastotales`
 --
 
@@ -89,6 +101,7 @@ DROP TABLE IF EXISTS `dieta`;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `dieta` AS SELECT 
+ 1 AS `FECHA`,
  1 AS `DIA`,
  1 AS `TIPO`,
  1 AS `ALIMENTO`,
@@ -110,6 +123,7 @@ CREATE TABLE `dietas` (
   `id_tipo` int NOT NULL,
   `id_alimento` int NOT NULL,
   `gramos` int NOT NULL,
+  `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`id_dieta`,`dia_id`,`id_tipo`,`id_alimento`),
   KEY `dietas_dia_id_dia_id_dia` (`dia_id`),
   KEY `dietas_id_tipo_tipo_comida_id_tipo` (`id_tipo`),
@@ -127,7 +141,7 @@ CREATE TABLE `dietas` (
 
 LOCK TABLES `dietas` WRITE;
 /*!40000 ALTER TABLE `dietas` DISABLE KEYS */;
-INSERT INTO `dietas` VALUES (10574649,1,1,12,16),(10574649,1,1,13,10),(10574649,1,2,1,27),(10574649,1,2,8,23),(10574649,1,3,3,19),(10574649,1,3,6,35),(10574649,2,1,7,15),(10574649,2,1,10,31),(10574649,2,2,5,80),(10574649,2,2,13,60),(10574649,2,3,14,50),(10574649,2,3,15,74),(10574649,3,1,4,28),(10574649,3,1,5,23),(10574649,3,2,10,23),(10574649,3,2,15,19),(10574649,3,3,7,24),(10574649,3,3,11,31),(10574649,4,1,1,10),(10574649,4,1,5,11),(10574649,4,2,4,17),(10574649,4,2,10,17),(10574649,4,3,8,24),(10574649,4,3,14,25),(10574649,5,1,12,25),(10574649,5,1,13,39),(10574649,5,2,14,67),(10574649,5,2,15,46),(10574649,5,3,11,61),(10574649,5,3,15,81),(13326937,1,1,1,33),(13326937,1,1,9,27),(13326937,1,2,9,39),(13326937,1,2,13,98),(13326937,1,3,7,150),(13326937,1,3,8,45);
+INSERT INTO `dietas` VALUES (10574649,1,1,12,16,NULL),(10574649,1,1,13,10,NULL),(10574649,1,2,1,27,NULL),(10574649,1,2,8,23,NULL),(10574649,1,3,3,19,NULL),(10574649,1,3,6,35,NULL),(10574649,2,1,7,15,NULL),(10574649,2,1,10,31,NULL),(10574649,2,2,5,80,NULL),(10574649,2,2,13,60,NULL),(10574649,2,3,14,50,NULL),(10574649,2,3,15,74,NULL),(10574649,3,1,4,28,NULL),(10574649,3,1,5,23,NULL),(10574649,3,2,10,23,NULL),(10574649,3,2,15,19,NULL),(10574649,3,3,7,24,NULL),(10574649,3,3,11,31,NULL),(10574649,4,1,1,10,NULL),(10574649,4,1,5,11,NULL),(10574649,4,2,4,17,NULL),(10574649,4,2,10,17,NULL),(10574649,4,3,8,24,NULL),(10574649,4,3,14,25,NULL),(10574649,5,1,8,20,'2023-05-06 13:39:54'),(10574649,5,1,13,24,'2023-05-06 13:39:54'),(10574649,5,2,5,27,'2023-05-06 13:39:54'),(10574649,5,2,6,38,'2023-05-06 13:39:54'),(10574649,5,3,3,34,'2023-05-06 13:39:54'),(10574649,5,3,14,35,'2023-05-06 13:39:54'),(10574649,6,1,7,31,'2023-05-06 14:07:34'),(10574649,6,1,13,41,'2023-05-06 14:07:34'),(10574649,6,2,11,150,'2023-05-06 14:07:34'),(10574649,6,2,14,83,'2023-05-06 14:07:34'),(10574649,6,3,9,39,'2023-05-06 14:07:34'),(10574649,6,3,10,62,'2023-05-06 14:07:34'),(10574649,7,1,2,17,'2023-05-06 14:12:14'),(10574649,7,1,7,10,'2023-05-06 14:12:14'),(10574649,7,2,1,10,'2023-05-06 14:12:14'),(10574649,7,2,3,10,'2023-05-06 14:12:14'),(10574649,7,3,7,13,'2023-05-06 14:12:14'),(10574649,7,3,10,16,'2023-05-06 14:12:14'),(13326937,1,1,1,33,NULL),(13326937,1,1,9,27,NULL),(13326937,1,2,9,39,NULL),(13326937,1,2,13,98,NULL),(13326937,1,3,7,150,NULL),(13326937,1,3,8,45,NULL),(13326937,2,1,6,17,'2023-05-06 14:14:24'),(13326937,2,1,12,19,'2023-05-06 14:14:24'),(13326937,2,2,5,20,'2023-05-06 14:14:24'),(13326937,2,2,13,24,'2023-05-06 14:14:24'),(13326937,2,3,4,16,'2023-05-06 14:14:24'),(13326937,2,3,10,20,'2023-05-06 14:14:24'),(13326937,3,1,3,14,'2023-05-07 09:30:25'),(13326937,3,1,8,10,'2023-05-07 09:30:25'),(13326937,3,2,5,15,'2023-05-07 09:30:25'),(13326937,3,2,8,20,'2023-05-07 09:30:25'),(13326937,3,3,3,18,'2023-05-07 09:30:25'),(13326937,3,3,12,16,'2023-05-07 09:30:25');
 /*!40000 ALTER TABLE `dietas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +168,7 @@ CREATE TABLE `enfermedad_paciente` (
 
 LOCK TABLES `enfermedad_paciente` WRITE;
 /*!40000 ALTER TABLE `enfermedad_paciente` DISABLE KEYS */;
-INSERT INTO `enfermedad_paciente` VALUES (27838471,1);
+INSERT INTO `enfermedad_paciente` VALUES (10574649,1),(27838471,1),(10574649,2),(10574649,3),(10574649,4);
 /*!40000 ALTER TABLE `enfermedad_paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +183,7 @@ CREATE TABLE `enfermedades` (
   `id_enfermedad` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id_enfermedad`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +192,7 @@ CREATE TABLE `enfermedades` (
 
 LOCK TABLES `enfermedades` WRITE;
 /*!40000 ALTER TABLE `enfermedades` DISABLE KEYS */;
-INSERT INTO `enfermedades` VALUES (1,'Diabetes');
+INSERT INTO `enfermedades` VALUES (1,'Diabetes'),(2,'Obesidad'),(3,'Anemia'),(4,'Bulimia'),(5,'Aterosclerosis'),(6,'Celiaquía'),(7,'Anorexia'),(8,'Osteoporosis'),(9,'Cáncer'),(10,'Hipertensión arterial'),(11,'Hipercolesterolemia');
 /*!40000 ALTER TABLE `enfermedades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +222,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (10574649,'Gustavo JR','Bustamante','1977-02-07',95,185,78,'Futbol'),(13326937,'Yasmin','Acosta','1979-11-08',80,180,55,'Ciclismo'),(27838471,'Gustavo','Bustamante','2000-07-06',62,170,50,'Correr');
+INSERT INTO `pacientes` VALUES (10574649,'Miguel','Bustamante','1977-02-07',95,185,30,'Futbol'),(13326937,'Yasmin','Acosta','1979-11-08',80,180,35,'Ciclismo'),(27838471,'Gustavo','Bustamante','2000-07-06',62,170,50,'Correr');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,6 +251,36 @@ INSERT INTO `tipo_comida` VALUES (1,'Desayuno'),(2,'Almuerzo'),(3,'Cena');
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `verenfermedades`
+--
+
+DROP TABLE IF EXISTS `verenfermedades`;
+/*!50001 DROP VIEW IF EXISTS `verenfermedades`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `verenfermedades` AS SELECT 
+ 1 AS `nombre`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `calcular_edad`
+--
+
+/*!50001 DROP VIEW IF EXISTS `calcular_edad`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `calcular_edad` AS select timestampdiff(YEAR,`pacientes`.`fecha_nac`,curdate()) AS `EDAD` from `pacientes` where (`pacientes`.`dni` = 27838471) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `caloriastotales`
 --
 
@@ -249,7 +293,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `caloriastotales` AS select sum(((`alimentos`.`calorias` * `dietas`.`gramos`) / 100)) AS `CaloriasTotales` from ((((`dietas` join `pacientes` on((`dietas`.`id_dieta` = `pacientes`.`dni`))) join `dia` on((`dia`.`id_dia` = `dietas`.`dia_id`))) join `tipo_comida` on((`dietas`.`id_tipo` = `tipo_comida`.`id_tipo`))) join `alimentos` on((`dietas`.`id_alimento` = `alimentos`.`id_alimento`))) where ((`dia`.`nombre` = 'Lunes') and (`pacientes`.`dni` = 27838471)) */;
+/*!50001 VIEW `caloriastotales` AS select sum(((`alimentos`.`calorias` * `dietas`.`gramos`) / 100)) AS `CaloriasTotales` from ((((`dietas` join `pacientes` on((`dietas`.`id_dieta` = `pacientes`.`dni`))) join `dia` on((`dia`.`id_dia` = `dietas`.`dia_id`))) join `tipo_comida` on((`dietas`.`id_tipo` = `tipo_comida`.`id_tipo`))) join `alimentos` on((`dietas`.`id_alimento` = `alimentos`.`id_alimento`))) where ((`dia`.`nombre` = 'Lunes') and (`pacientes`.`dni` = 10574649)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -267,7 +311,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `dieta` AS select `dia`.`nombre` AS `DIA`,`tipo_comida`.`nombre` AS `TIPO`,`alimentos`.`nombre` AS `ALIMENTO`,`alimentos`.`vitaminas` AS `VITAMINAS`,`alimentos`.`aporte_nutricional` AS `NUTRIENTES`,`dietas`.`gramos` AS `GRAMOS` from ((((`dietas` join `pacientes` on((`dietas`.`id_dieta` = `pacientes`.`dni`))) join `dia` on((`dia`.`id_dia` = `dietas`.`dia_id`))) join `tipo_comida` on((`dietas`.`id_tipo` = `tipo_comida`.`id_tipo`))) join `alimentos` on((`dietas`.`id_alimento` = `alimentos`.`id_alimento`))) where ((`dia`.`nombre` = 'Martes') and (`pacientes`.`dni` = 27838471)) */;
+/*!50001 VIEW `dieta` AS select `dietas`.`fecha` AS `FECHA`,`dia`.`nombre` AS `DIA`,`tipo_comida`.`nombre` AS `TIPO`,`alimentos`.`nombre` AS `ALIMENTO`,`alimentos`.`vitaminas` AS `VITAMINAS`,`alimentos`.`aporte_nutricional` AS `NUTRIENTES`,`dietas`.`gramos` AS `GRAMOS` from ((((`dietas` join `pacientes` on((`dietas`.`id_dieta` = `pacientes`.`dni`))) join `dia` on((`dia`.`id_dia` = `dietas`.`dia_id`))) join `tipo_comida` on((`dietas`.`id_tipo` = `tipo_comida`.`id_tipo`))) join `alimentos` on((`dietas`.`id_alimento` = `alimentos`.`id_alimento`))) where ((`dia`.`nombre` = 'Viernes') and (`pacientes`.`dni` = 10574649)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `verenfermedades`
+--
+
+/*!50001 DROP VIEW IF EXISTS `verenfermedades`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `verenfermedades` AS select `enfermedades`.`nombre` AS `nombre` from (`enfermedades` join `enfermedad_paciente` on((`enfermedad_paciente`.`id_enfermedad` = `enfermedades`.`id_enfermedad`))) where (`enfermedad_paciente`.`id_paciente` = 27838471) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -281,4 +343,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-05 17:48:41
+-- Dump completed on 2023-05-07  9:56:21

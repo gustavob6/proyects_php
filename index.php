@@ -1,5 +1,12 @@
 <?php
-  require_once("model_database.php");
+  require_once("./database/database.php");
+			
+	$registros = array();
+		
+	$sql = "SELECT * FROM pacientes";
+	$registros1=$conn->prepare($sql);
+	$registros1->execute(array());
+	$registros=$registros1->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +22,7 @@
 <div class="container">
   <div class="header">
     <h3>Doctor Nutricionista</h3>
-    <a href="./forms/registro.php">
+    <a href="./forms/registros/registro.php">
       <button class="btn">Añadir Paciente</button>
     </a>
   </div>
@@ -33,13 +40,13 @@
               </div>
             </div>
               
-              <a href="verDieta.php?dni=<?php echo $key['dni']?>&dia=<?php echo "Lunes"?>">
+              <a href="./views/dieta/verDieta.php?dni=<?php echo $key['dni']?>&dia=<?php echo "Lunes"?>">
                 <button class="btn">Ver Dieta</button>
               </a>
-              <a href="addDieta.php?dni=<?php echo $key['dni']?>">
+              <a href="./forms/dieta/addDieta.php?dni=<?php echo $key['dni']?>">
               <button class="btn">Añadir Dieta</button>
               </a>
-              <a href="./forms/datos.php?dni=<?php echo $key['dni']?>">
+              <a href="./forms/registros/datos.php?dni=<?php echo $key['dni']?>">
               <button class="btn">Datos del paciente</button>
               </a>
           </div>

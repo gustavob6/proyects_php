@@ -1,5 +1,6 @@
 <?php 
-require_once("../database.php");
+require_once("../../database/database.php");
+require_once("../../database/consultas.php");
 
 if(isset($_POST["add"])){
     $dni = $_POST["dni"];
@@ -51,8 +52,8 @@ if(isset($_POST["add"])){
                         <input type="number" name="height" min="80" max="240" placeholder="Altura (CM)" required class="form-control">
                     </div>
                     <div class="item">
-                        <input type="number" name="masa" min="50" max="200" required class="form-control" 
-                            placeholder="Masa Muscular">
+                        <input type="number" name="masa" min="5" max="100" required class="form-control" 
+                            placeholder="Masa Muscular %">
                     </div>   
                     <div class="item">
                         <input type="Text" name="activity" required class="form-control" maxlength="30" 
@@ -62,7 +63,7 @@ if(isset($_POST["add"])){
                         <button type="submit" name="add"class="button btnCreate">Registrar Paciente</button>
                     </div>
                 </form>
-                <a href="../index.php">
+                <a href="../../index.php">
                     <button class="button">Volver</button>
                 </a>
     </div>
