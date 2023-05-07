@@ -1,6 +1,6 @@
 <?php
     require_once("database.php");
-    require_once("consutas.php");
+    require_once("consultas.php");
 
     if(isset($_GET["dni"]) && isset($_GET["dia"])){
         $dni = $_GET["dni"];
@@ -33,6 +33,15 @@
 	$registros=$registros1->fetchAll();
 
     $tipo = " ";
+
+    $calorias = $conn->prepare($sql1);
+    $calorias->execute(array(":dia"=>$dia,":dni"=>$dni));
+    $count = $calorias->fetchColumn();
+    $fecha = " ";
+    
+    foreach($registros as $key){
+        $fecha = $key["FECHA"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +59,11 @@
             <div class="card">
                 <div class="card-title">
                     <p class="card-h5"><?php echo $dia?></p>
+                    <p><?php echo $fecha;?></p>
                 </div>
                 <hr class="solid">    
                 <?php foreach ($registros as $key):?>
+                
                 <?php if($key["TIPO"] !== $tipo): ?>
                 <?php $tipo = $key["TIPO"] ?>
                 <div class="card-body">    
@@ -63,6 +74,7 @@
                     <li class="list-group-item"><?php echo $key["ALIMENTO"]?></li>
                 </ul>
                 <?php endforeach; ?>
+                <div class="calorias"><?php echo $count?></div>
                 <div class="card-btn">
                     <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $siguiente?>">
                         <button class="btn">Siguiente</button>

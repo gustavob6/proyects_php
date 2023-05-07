@@ -61,6 +61,9 @@
                     <a href="../">
                         <button class="button btn-create">Volver</button>
                     </a>
+                    <a href="../enfermedades.php?dni=<?php echo $dni?>">
+                        <button class="button btn-create">Enfermedades</button>
+                    </a>
                     </div>
                 <?php endforeach; ?>
     </div>

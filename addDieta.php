@@ -1,6 +1,6 @@
 <?php 
 require_once("database.php");
-require_once("consutas.php");
+require_once("consultas.php");
 
 if(isset($_GET["dni"])){
     $dni = $_GET["dni"];
@@ -59,12 +59,12 @@ if(isset($_POST["add"])){
     $gcena1 = $_POST["gcena1"];
     $gcena2 = $_POST["gcena2"];
 
-    $sql = "INSERT INTO dietas VALUES   (:dni,:dia,:tipo1,:desayuno1,:gdesayuno1),
-                                        (:dni,:dia,:tipo1,:desayuno2,:gdesayuno2),
-                                        (:dni,:dia,:tipo2,:almuerzo1,:galmuerzo1),
-                                        (:dni,:dia,:tipo2,:almuerzo2,:galmuerzo2),
-                                        (:dni,:dia,:tipo3,:cena1,:gcena1),
-                                        (:dni,:dia,:tipo3,:cena2,:gcena2)";
+    $sql = "INSERT INTO dietas VALUES   (:dni,:dia,:tipo1,:desayuno1,:gdesayuno1,NULL),
+                                        (:dni,:dia,:tipo1,:desayuno2,:gdesayuno2,NULL),
+                                        (:dni,:dia,:tipo2,:almuerzo1,:galmuerzo1,NULL),
+                                        (:dni,:dia,:tipo2,:almuerzo2,:galmuerzo2,NULL),
+                                        (:dni,:dia,:tipo3,:cena1,:gcena1,NULL),
+                                        (:dni,:dia,:tipo3,:cena2,:gcena2,NULL)";
 
     $result=$conn->prepare($sql);  
     $result->execute(array(":dni"=>$dni,":dia"=>$num_dia,
