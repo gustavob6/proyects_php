@@ -17,7 +17,7 @@ if(isset($_POST["add"])){
     $result->execute(array(":dni"=>$dni,":name1"=>$name,
                             ":last1"=>$last,":nac"=>$fecha,":peso"=>$peso,":altura"=>$altura,
                             ":masa"=>$masa,":actividad"=>$actividad));
-    header("Location:../index.php");
+    header("Location:../../index.php");
   }   
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-  require_once("./database/database.php");
+  	require_once("./database/database.php");
 			
 	$registros = array();
 		
@@ -12,47 +12,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyecto</title>
-  <link rel="stylesheet" href="./index.css">
+<title>Proyecto</title>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="custom.css">
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h3>Doctor Nutricionista</h3>
-    <a href="./forms/registros/registro.php">
-      <button class="btn">Añadir Paciente</button>
-    </a>
-  </div>
-
-  <div class="item-container">
-  <h3>Pacientes</h3>
-    <?php foreach ($registros as $key):?>
-        <div class="item-css">
-          <div class="item">
-            <div class="text">
-              <div class="text-1">
-              <?php echo $key["dni"]?>
-              <?php echo $key["nombre"]?>
-              <?php echo $key["Apellido"]?>
-              </div>
-            </div>
-              
-              <a href="./views/dieta/verDieta.php?dni=<?php echo $key['dni']?>&dia=<?php echo "Lunes"?>">
-                <button class="btn">Ver Dieta</button>
-              </a>
-              <a href="./forms/dieta/addDieta.php?dni=<?php echo $key['dni']?>">
-              <button class="btn">Añadir Dieta</button>
-              </a>
-              <a href="./forms/registros/datos.php?dni=<?php echo $key['dni']?>">
-              <button class="btn">Datos del paciente</button>
-              </a>
-          </div>
-        </div>
-    <?php endforeach; ?>
-  </div>
-      </div> 
-</body>
+	<header id="main-header">
+			<a id="text-header" href="#">
+				<span class="site-name">Proyecto Nutricionista</span>
+			</a> 
+</header>
+	<div class="container">
+		<div class="container-item">
+		<div class="row">
+			<div class="col-md-6">
+				<h2 class="heading-section">Lista de Pacientes</h2>
+				<a href="./forms/registros/registro.php">
+      				<button class="btn btn-success">Añadir Paciente</button>
+    			</a>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-primary">
+						    <tr>
+						      <th>Cedula</th>
+						      <th>Nombre</th>
+						      <th>Apellido</th>
+						      <th>Fecha de Nacimiento</th>
+							  <th>Acciones</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  <?php foreach ($registros as $key):?>
+						    <tr>
+						      <th scope="row"><?php echo $key["dni"]?></th>
+						      <td><?php echo $key["nombre"]?></td>
+						      <td> <?php echo $key["Apellido"]?></td>
+						      <td> <?php echo $key["fecha_nac"]?></td>
+							  <td>
+							  <a href="./views/dieta/verDieta.php?dni=<?php echo $key['dni']?>&dia=<?php echo "Lunes"?>">
+                				<button class="btn btn-success">Ver Dieta</button>
+              					</a>
+              					<a href="./forms/dieta/addDieta.php?dni=<?php echo $key['dni']?>">
+              						<button class="btn btn-success">Añadir Dieta</button>
+              					</a>
+              					<a href="./forms/registros/datos.php?dni=<?php echo $key['dni']?>">
+              					<button class="btn btn-success">Datos del paciente</button>
+              					</a>
+							  </td>
+						    </tr>
+							<?php endforeach; ?>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
 </html>
+

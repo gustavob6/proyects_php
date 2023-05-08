@@ -40,7 +40,7 @@ if(isset($_GET["dni"])){
             $num_dia = 7;
             $dia = "Domingo";
         }else if($key["DIA"] == "Domingo"){
-            echo "Ya colocaste todo";
+            
         }      
     }
 }                                                                                       
