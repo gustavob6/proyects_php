@@ -96,7 +96,7 @@
                         <button class="btn">Pagina Principal</button>
                     </a>
                     <a href="../../forms/dieta/editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
-                    <button class="btn">Editar Dia</button>
+                    <button class="btn">Editar o Añadir</button>
                     </a> 
                     <a href="detalles.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
                         <button class="btn">Detalles</button>

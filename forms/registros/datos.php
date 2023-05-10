@@ -38,11 +38,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./custom1.css">
+    <link rel="stylesheet" href="./custom.css">
     <title>Datos</title>
 </head>
 <body>
     <div class="container">
+        <div class="container-form">
     <?php foreach ($registros as $key):?>
         <form class="form" name="form1" method="post" action="datos.php?dni=<?php echo $dni ?>">
                     <div class="item">
@@ -77,19 +78,21 @@
                     <label for="Cedula" class="label">Actividad</label>
                         <input type="Text" name="activity"class="form-control" maxlength="30" value="<?php echo $key["actividad_fisica"] ?>">
                     </div>
+                    <?php endforeach; ?>
                     <div class="item">
                         <button type="submit" name="add" class="button btn-create">Actualizar Paciente</button>
                     </div>      
                 </form>
-                    <div class="item">
-                    <a href="../../">
-                        <button class="button btn-create">Volver</button>
-                    </a>
-                    <a href="../../views/enfermedad/enfermedades.php?dni=<?php echo $dni?>">
-                        <button class="button btn-create">Enfermedades</button>
-                    </a>
+                    <div class="item-btn">
+                        <a href="../../">
+                            <button class="button btn-create">Volver</button>
+                        </a>
+                        <a href="../../views/enfermedad/enfermedades.php?dni=<?php echo $dni?>">
+                            <button class="button btn-create">Enfermedades</button>
+                        </a>
                     </div>
-                <?php endforeach; ?>
+            </div>
+               
     </div>
 </body>
 </html>

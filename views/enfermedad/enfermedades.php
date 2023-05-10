@@ -33,7 +33,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="enfermedad.css">
+    <link rel="stylesheet" href="enf.css">
     <title>Lista de enfermedades</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
                 <?php foreach($registros as $key):?>
                 <li class="item">
                     <?php echo $key["NOMBRE"]?>
-                    <a href="enfermedades.php?dni=<?php echo $dni?>&enf=<?php echo $key["ID"]?>">
+                    <a class="delete" href="enfermedades.php?dni=<?php echo $dni?>&enf=<?php echo $key["ID"]?>">
                         Eliminar
                     </a>
                 </li>

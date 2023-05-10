@@ -14,7 +14,13 @@ form{
   width: 50%;
   margin-left: 21px;
 }
-
+.container-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+}
 .item{
     display: flex;
     flex-direction: column;
@@ -22,6 +28,13 @@ form{
     margin: 7px;
     text-align: center;
     justify-content: center;
+}
+
+.item-btn{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 48%;
 }
 
 .button{
