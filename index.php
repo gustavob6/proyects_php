@@ -15,14 +15,14 @@
 <title>Proyecto</title>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="custom.css">
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<header id="main-header">
-			<a id="text-header" href="#">
-				<span class="site-name">Proyecto Nutricionista</span>
+<header class="main-header">
+			<a class="text-header" href="#">
+				<span class="site-name">Salud y Vida</span>
 			</a> 
-</header>
+	</header>
 	<div class="container">
 		<div class="container-item">
 		<div class="row">

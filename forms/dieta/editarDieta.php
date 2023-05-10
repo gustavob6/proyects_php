@@ -73,7 +73,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Modificar Dieta</title>
 </head>
 <body>
@@ -101,7 +101,7 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr"name="gdesayuno1" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="gdesayuno1" min="10" max="900" required class="form-control">
         </div>
         <div class="desayuno1">
         <select name="desayuno2" id="color" required>
@@ -122,7 +122,7 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr"name="gdesayuno2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="gdesayuno2" min="10" max="900" required class="form-control">
         </div>
         <label for="color">Almuerzo</label>
         <div class="almuerzo">
@@ -144,7 +144,7 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number"placeholder="gr" name="galmuerzo1" min="10" max="200" required class="form-control">
+        <input type="number"placeholder="gr" name="galmuerzo1" min="10" max="900" required class="form-control">
         </div>
         <div class="almuerzo1">
         <select name="almuerzo2" id="color" required>
@@ -165,7 +165,7 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr"name="galmuerzo2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="galmuerzo2" min="10" max="900" required class="form-control">
         </div>
     <label for="color">Cena</label>
     <div class="cena">
@@ -187,7 +187,7 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number"placeholder="gr" name="gcena1" min="10" max="200" required class="form-control">
+        <input type="number"placeholder="gr" name="gcena1" min="10" max="900" required class="form-control">
         </div>
         <div class="cena1">
         <select name="cena2" id="color" required>
@@ -208,12 +208,12 @@
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr" name="gcena2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr" name="gcena2" min="10" max="900" required class="form-control">
         </div>
     </div>
     
     <div>
-        <button type="submit" name="update" class="btn">Actualizar</button>
+        <button type="submit" name="update" class="btn">Actualizar Dia</button>
     </div>
     </div>
 </form>

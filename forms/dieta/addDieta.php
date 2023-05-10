@@ -59,12 +59,12 @@ if(isset($_POST["add"])){
     $gcena1 = $_POST["gcena1"];
     $gcena2 = $_POST["gcena2"];
 
-    $sql = "INSERT INTO dietas VALUES   (:dni,:dia,:tipo1,:desayuno1,:gdesayuno1,NULL),
-                                        (:dni,:dia,:tipo1,:desayuno2,:gdesayuno2,NULL),
-                                        (:dni,:dia,:tipo2,:almuerzo1,:galmuerzo1,NULL),
-                                        (:dni,:dia,:tipo2,:almuerzo2,:galmuerzo2,NULL),
-                                        (:dni,:dia,:tipo3,:cena1,:gcena1,NULL),
-                                        (:dni,:dia,:tipo3,:cena2,:gcena2,NULL)";
+    $sql = "INSERT INTO dietas VALUES   (:dni,:dia,:tipo1,:desayuno1,:gdesayuno1,NOW()),
+                                        (:dni,:dia,:tipo1,:desayuno2,:gdesayuno2,NOW()),
+                                        (:dni,:dia,:tipo2,:almuerzo1,:galmuerzo1,NOW()),
+                                        (:dni,:dia,:tipo2,:almuerzo2,:galmuerzo2,NOW()),
+                                        (:dni,:dia,:tipo3,:cena1,:gcena1,NOW()),
+                                        (:dni,:dia,:tipo3,:cena2,:gcena2,NOW())";
 
     $result=$conn->prepare($sql);  
     $result->execute(array(":dni"=>$dni,":dia"=>$num_dia,
@@ -93,7 +93,7 @@ if(isset($_POST["add"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Añadir Dieta</title>
 </head>
 <body></body>
@@ -121,7 +121,7 @@ if(isset($_POST["add"])){
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr"name="gdesayuno1" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="gdesayuno1" min="10" max="900" required class="form-control">
         </div>
         <div class="desayuno1">
         <select name="desayuno2" id="color" required>
@@ -142,7 +142,7 @@ if(isset($_POST["add"])){
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr"name="gdesayuno2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="gdesayuno2" min="10" max="900" required class="form-control">
         </div>
         <label for="color">Almuerzo</label>
         <div class="almuerzo">
@@ -164,7 +164,7 @@ if(isset($_POST["add"])){
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number"placeholder="gr" name="galmuerzo1" min="10" max="200" required class="form-control">
+        <input type="number"placeholder="gr" name="galmuerzo1" min="10" max="900" required class="form-control">
         </div>
         <div class="almuerzo1">
         <select name="almuerzo2" id="color" required>
@@ -185,7 +185,7 @@ if(isset($_POST["add"])){
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr"name="galmuerzo2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr"name="galmuerzo2" min="10" max="900" required class="form-control">
         </div>
     <label for="color">Cena</label>
     <div class="cena">
@@ -207,7 +207,7 @@ if(isset($_POST["add"])){
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number"placeholder="gr" name="gcena1" min="10" max="200" required class="form-control">
+        <input type="number"placeholder="gr" name="gcena1" min="10" max="900" required class="form-control">
         </div>
         <div class="cena1">
         <select name="cena2" id="color" required>
@@ -228,12 +228,12 @@ if(isset($_POST["add"])){
             <option value="14">Brocoli</option>
             <option value="15">Manzana</option>
         </select>
-        <input type="number" placeholder="gr" name="gcena2" min="10" max="200" required class="form-control">
+        <input type="number" placeholder="gr" name="gcena2" min="10" max="900" required class="form-control">
         </div>
     </div>
     
     <div>
-        <button type="submit" name="add" class="btn">Add</button>
+        <button type="submit" name="add" class="btn">Añadir Dia</button>
     </div>
     </div>
 </form>

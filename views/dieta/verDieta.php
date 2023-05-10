@@ -50,7 +50,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./dieta.css">
+    <link rel="stylesheet" href="./dita.css">
     <title>Dieta</title>
 </head>
 <body>
@@ -58,8 +58,11 @@
         <div class="container-item">
                 <div class="title">
                     <p class="text-day"><?php echo $dia?></p>
-                    <p class="text-date"><?php echo $fecha;?></p>
+                    <?php if($fecha !== " "): ?>
+                    <p class="text-date">Actualizado el: <?php echo $fecha;?></p>
+                    <?php endif;?>
                 </div>
+                <?php if($registros): ?>
                 <?php foreach ($registros as $key):?>
                 <?php if($key["TIPO"] !== $tipo): ?>
                 <?php $tipo = $key["TIPO"] ?>
@@ -72,14 +75,20 @@
                 </div>
                 <?php endforeach; ?>
                 <div class="list-group">
+                    <p class="text-calorias">Calorias totales</p>
                     <div class="list-item"><?php echo $count?> kcal</div>
                 </div>
+                <?php else:?>
+                    <div class="list-group">
+                        <h2>No hay dietas registradas para este dia</h2>
+                    </div>
+                <?php endif;?>
                 <div class="btn-mood">
-                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $siguiente?>">
-                        <button class="btn">Siguiente</button>
-                    </a>
                     <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $anterior?>">
                         <button class="btn">Volver</button>
+                    </a>
+                    <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $siguiente?>">
+                        <button class="btn">Siguiente</button>
                     </a>
                 </div>
                 <div class="container-btn">

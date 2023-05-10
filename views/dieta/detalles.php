@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./detalles.css">
+    <link rel="stylesheet" href="./detalle.css">
     <title>Detalles</title>
 </head>
 <body>
@@ -33,6 +33,7 @@
                 <div class="title">
                     <p class="text-day"><?php echo $dia?></p>
                 </div>    
+                <?php if($registros): ?>
                 <?php foreach ($registros as $key):?>
                 
                 <?php if($key["TIPO"] !== $tipo): ?>
@@ -50,9 +51,16 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
+
                 <div class="list-group">
+                    <p class="text-calorias">Calorias totales</p>
                     <div class="list-item"><?php echo $count?> kcal</div>
                 </div>
+                <?php else:?>
+                    <div class="list-group">
+                        <h2>No hay dietas registradas para este dia</h2>
+                    </div>
+                <?php endif;?>
                 <div class="container-btn">
                     <a href="../../index.php">
                         <button class="btn">Pagina Principal</button>

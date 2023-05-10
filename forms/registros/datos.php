@@ -12,6 +12,26 @@
 	$registros1=$conn->prepare($sql);
 	$registros1->execute(array(":dni"=>$dni));
 	$registros=$registros1->fetchAll();
+
+    if(isset($_POST["add"])){
+        $dni = $_GET["dni"];
+        $name = $_POST["name"];
+        $last = $_POST["last"];
+        $peso = $_POST["weight"];
+        $altura = $_POST["height"];
+        $masa = $_POST["masa"];
+        $actividad = $_POST["activity"];
+        
+        $sql="UPDATE `nutricionista1`.`pacientes` 
+        SET `nombre` = :name1, `Apellido` = :last1, 
+        `peso` = :peso, `altura` = :altura, `masa_muscular` = :masa, `actividad_fisica` = :actividad
+        WHERE (`dni` = :dni)";
+        $result=$conn->prepare($sql);  
+        $result->execute(array(":dni"=>$dni,":name1"=>$name,
+                                ":last1"=>$last,":peso"=>$peso,":altura"=>$altura,
+                                ":masa"=>$masa,":actividad"=>$actividad));
+        header("Location:../../index.php");
+      }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,18 +44,18 @@
 <body>
     <div class="container">
     <?php foreach ($registros as $key):?>
-                <form class="form">
+        <form class="form" name="form1" method="post" action="datos.php?dni=<?php echo $dni ?>">
                     <div class="item">
                         <label for="Cedula" class="label">Cedula</label>
-                        <input type="number" class="form-control" value="<?php echo $key["dni"] ?>" disabled>
+                        <input type="number" name="dni" class="form-control" value="<?php echo $key["dni"] ?>" disabled>
                     </div>
                     <div class="item">
                     <label for="Cedula" class="label">Nombre</label>
-                        <input type="text" class="form-control" maxlength="30" value="<?php echo $key["nombre"] ?>" disabled >
+                        <input type="text" name="name" class="form-control" maxlength="30" value="<?php echo $key["nombre"] ?>">
                     </div>
                     <div class="item">
                     <label for="Cedula" class="label">Apellido</label>
-                        <input type="text" class="form-control" maxlength="30" value="<?php echo $key["Apellido"] ?>" disabled>
+                        <input type="text" name="last" class="form-control" maxlength="30" value="<?php echo $key["Apellido"] ?>">
                     </div>
                     <div class="item">
                     <label for="Cedula" class="label">Fecha de Nacimiento</label>
@@ -43,19 +63,22 @@
                     </div>
                     <div class="item">
                     <label for="Cedula" class="label">Peso(Kg)</label>
-                        <input type="number" min="30" max="140" class="form-control" value="<?php echo $key["peso"] ?>" disabled>
+                        <input type="number" name="weight"min="30" max="140" class="form-control" value="<?php echo $key["peso"] ?>">
                     </div> 
                     <div class="item">
                     <label for="Cedula" class="label">Altura(Cm)</label>
-                        <input type="number" min="80" max="240" class="form-control" value="<?php echo $key["altura"] ?>" disabled>
+                        <input type="number" name="height"min="80" max="240" class="form-control" value="<?php echo $key["altura"] ?>">
                     </div>
                     <div class="item">
                     <label for="Cedula" class="label">Masa Muscular %</label>
-                        <input type="number" min="05" max="100" class="form-control" value="<?php echo $key["masa_muscular"] ?>" disabled>
+                        <input type="number" name="masa"min="05" max="100" class="form-control" value="<?php echo $key["masa_muscular"] ?>">
                     </div>   
                     <div class="item">
                     <label for="Cedula" class="label">Actividad</label>
-                        <input type="Text" class="form-control" maxlength="30" value="<?php echo $key["actividad_fisica"] ?>" disabled>
+                        <input type="Text" name="activity"class="form-control" maxlength="30" value="<?php echo $key["actividad_fisica"] ?>">
+                    </div>
+                    <div class="item">
+                        <button type="submit" name="add" class="button btn-create">Actualizar Paciente</button>
                     </div>      
                 </form>
                     <div class="item">

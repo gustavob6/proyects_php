@@ -42,8 +42,11 @@ WHERE
 (`nutricionista1`.`pacientes`.`dni` = :dni) GROUP BY dia.nombre;";
 
 $sql4 = "
-SELECT enfermedades.nombre as NOMBRE from enfermedades 
+SELECT enfermedades.nombre as NOMBRE, enfermedades.id_enfermedad as ID from enfermedades 
 INNER JOIN enfermedad_paciente ON enfermedad_paciente.id_enfermedad = enfermedades.id_enfermedad 
 	WHERE enfermedad_paciente.id_paciente = :dni;";
+    
+$sql5 = "DELETE FROM `nutricionista1`.`enfermedad_paciente` 
+       WHERE (`id_paciente` = :dni) and (`id_enfermedad` = :enf);";
 
 ?>

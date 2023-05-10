@@ -5,6 +5,11 @@
     if(isset($_GET["dni"])){
         $dni = $_GET["dni"];
     }
+    if(isset($_GET["enf"])){
+       $enf = $_GET["enf"];
+       $result = $conn->prepare($sql5);  
+       $result->execute(array(":dni"=>$dni,":enf"=>$enf));  
+    }
 
     if(isset($_POST["add"])){
         $enfermedad = $_POST["enfermedad"];
@@ -35,11 +40,21 @@
     <div class="container">
         <div class="lista">
             <ul class="list">
+                <?php if($registros): ?>
+                
                 <?php foreach($registros as $key):?>
                 <li class="item">
                     <?php echo $key["NOMBRE"]?>
+                    <a href="enfermedades.php?dni=<?php echo $dni?>&enf=<?php echo $key["ID"]?>">
+                        Eliminar
+                    </a>
                 </li>
                 <?php endforeach; ?>
+                <?php else:?>   
+                <div class="list-group">
+                        <h4>No hay enfermedades registradas</h4>
+                    </div>
+                <?php endif;?>
             </ul>
         </div>
         <form name="form1" action="enfermedades.php?dni=<?php echo $dni?>" method="post">
@@ -50,12 +65,13 @@
                     <option value="2">Obesidad</option>
                     <option value="3">Anemia</option>
                     <option value="4">Bulimia</option>
-                    <option value="5">Quinoa</option>
-                    <option value="6">Zanahoria</option>
-                    <option value="7">Aguacate</option>
-                    <option value="8">Nueces</option>
-                    <option value="9">Huevos</option>
-                    <option value="10">Tomate</option>
+                    <option value="5">Aterosclerosis</option>
+                    <option value="6">Celiaquía</option>
+                    <option value="7">Anorexia</option>
+                    <option value="8">Osteoporosis</option>
+                    <option value="9">Cáncer</option>
+                    <option value="10">Hipertensión arterial</option>
+                    <option value="11">Hipercolesterolemia</option>
                 </select>
             </div> 
             <div class="container-btn">
