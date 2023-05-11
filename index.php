@@ -63,6 +63,9 @@
               					<a href="./forms/registros/datos.php?dni=<?php echo $key['dni']?>">
               					<button class="btn btn-success">Datos del paciente</button>
               					</a>
+								  <a href="./reporte/reporteDieta.php?dni=<?php echo $key['dni']?>">
+              					<button class="btn btn-success">Reporte</button>
+              					</a>
 							  </td>
 						    </tr>
 							<?php endforeach; ?>

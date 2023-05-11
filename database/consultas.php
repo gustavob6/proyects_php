@@ -58,6 +58,31 @@ TIMESTAMPDIFF(YEAR,
 FROM
 `pacientes`
 WHERE
-(`pacientes`.`dni` = :dni)"
+(`pacientes`.`dni` = :dni)";
+
+$sql7 = "SELECT 
+`dietas`.`fecha` AS `FECHA`,
+`dia`.`nombre` AS `DIA`,
+`tipo_comida`.`nombre` AS `TIPO`,
+`alimentos`.`nombre` AS `ALIMENTO`,
+`alimentos`.`vitaminas` AS `VITAMINAS`,
+`alimentos`.`aporte_nutricional` AS `NUTRIENTES`,
+`dietas`.`gramos` AS `GRAMOS`
+FROM
+((((`dietas`
+JOIN `pacientes` ON ((`dietas`.`id_dieta` = `pacientes`.`dni`)))
+JOIN `dia` ON ((`dia`.`id_dia` = `dietas`.`dia_id`)))
+JOIN `tipo_comida` ON ((`dietas`.`id_tipo` = `tipo_comida`.`id_tipo`)))
+JOIN `alimentos` ON ((`dietas`.`id_alimento` = `alimentos`.`id_alimento`)))
+WHERE
+(((`dia`.`nombre` = 'Lunes')
+    OR (`dia`.`nombre` = 'Martes')
+    OR (`dia`.`nombre` = 'Miercoles')
+    OR (`dia`.`nombre` = 'Jueves')
+    OR (`dia`.`nombre` = 'Viernes')
+    OR (`dia`.`nombre` = 'Sabado')
+    OR (`dia`.`nombre` = 'Domingo'))
+    AND (`pacientes`.`dni` = :dni))
+    ORDER BY `dia`.`id_dia`;"
 
 ?>
