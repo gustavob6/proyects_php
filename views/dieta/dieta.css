@@ -1,0 +1,167 @@
+.container{
+    margin-top:70px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-item{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0bbb40;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.title{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.text-date{
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.text-calorias{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.body{
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+.list-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 160px;
+    background-color: rgb(199, 199, 199);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    border-radius: 5px ;
+    text-align: center;
+}
+
+.list-group{
+  display: flex;
+  justify-content: center;
+  margin: 1px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn{
+    appearance: none;
+    background-color: #2ea44f;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    width: 120px;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  
+  .btn:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+  }
+  
+  .btn:hover {
+    background-color: #2c974b;
+  }
+  
+  .btn:focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+  }
+  
+  .btn:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+  }
+  
+  .btn:active {
+    background-color: #298e46;
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+  }
+
+.container-btn{
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.btn-mood{
+  margin: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.main-header {
+  
+	background: #393a39;
+	color: white;
+	height: 60px;
+	width: 100%; 
+	left: 0; 
+	top: 0; 
+	position: fixed;
+  
+}	
+
+.main-header a {
+		color: white;
+}
+
+.text-header {
+	float: left;
+  margin-top: 4px;
+	padding: 15px 0 0 20px;
+	text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.text-header:hover{
+  color:#0d9d47;
+}
+	
+.text-header .site-name {
+		font-weight: 700;
+		font-size: 1.1em;
+}
+.text-header1 {
+	float: right;
+  margin-top: 4px;
+  margin-right: 20px;
+	padding: 15px 0 0 20px;
+	text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.text-header1:hover{
+  color:#0d9d47;
+}
+	
+.text-header1 .site-name {
+		font-weight: 700;
+		font-size: 1.1em;
+}

@@ -50,10 +50,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./dita.css">
+    <link rel="stylesheet" href="./dieta.css">
     <title>Dieta</title>
 </head>
 <body>
+    <header class="main-header">
+			<a class="text-header" href="../../index.php">
+				<span class="site-name">Nutricion 2.0</span>
+			</a>
+			<a class="text-header1" href="detalles.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
+			 <span class="site-name">Detalles</span>
+            </a> 
+            <a class="text-header1" href="../../forms/dieta/editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
+			 <span class="site-name">Editar/Añadir</span>
+            </a> 
+	</header>
     <div class="container">
         <div class="container-item">
                 <div class="title">
@@ -90,17 +101,6 @@
                     <a href="verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $siguiente?>">
                         <button class="btn">Siguiente</button>
                     </a>
-                </div>
-                <div class="container-btn">
-                    <a href="../../index.php">
-                        <button class="btn">Pagina Principal</button>
-                    </a>
-                    <a href="../../forms/dieta/editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
-                    <button class="btn">Editar o Añadir</button>
-                    </a> 
-                    <a href="detalles.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
-                        <button class="btn">Detalles</button>
-                    </a> 
                 </div>
             </div>
     </div>

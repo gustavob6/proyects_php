@@ -38,10 +38,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./custom.css">
+    <link rel="stylesheet" href="./main.css">
     <title>Datos</title>
 </head>
 <body>
+<header class="main-header">
+			<a class="text-header" href="#">
+				<span class="site-name">Nutricion 2.0</span>
+			</a>
+			<a class="text-header1" href="../../index.php">
+			 <span class="site-name">Volver</span>
+            </a> 
+	</header>
     <div class="container">
         <div class="container-form">
     <?php foreach ($registros as $key):?>
@@ -84,9 +92,6 @@
                     </div>      
                 </form>
                     <div class="item-btn">
-                        <a href="../../">
-                            <button class="button btn-create">Volver</button>
-                        </a>
                         <a href="../../views/enfermedad/enfermedades.php?dni=<?php echo $dni?>">
                             <button class="button btn-create">Enfermedades</button>
                         </a>

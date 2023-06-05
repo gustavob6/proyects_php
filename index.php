@@ -1,11 +1,18 @@
 <?php
+	session_start();
   	require_once("./database/database.php");
-			
+	$id = $_SESSION['id_usuario'];
+	echo $id;  
+
+	if (!isset($_SESSION['user_id'])) {
+		header('Location: ./login/login.php');
+	  }
+
 	$registros = array();
 		
-	$sql = "SELECT * FROM pacientes";
+	$sql = "SELECT * FROM pacientes where id_usuario = :id";
 	$registros1=$conn->prepare($sql);
-	$registros1->execute(array());
+	$registros1->execute(array(':id'=>$_SESSION['id_usuario']));
 	$registros=$registros1->fetchAll();
 ?>
 
@@ -18,10 +25,13 @@
 	<link rel="stylesheet" href="custom.css">
 </head>
 <body>
-<header class="main-header">
+	<header class="main-header">
 			<a class="text-header" href="#">
 				<span class="site-name">Nutricion 2.0</span>
-			</a> 
+			</a>
+			<a class="text-header1" href="./login/logout.php">
+			 <span class="site-name">Logout</span>
+            </a> 
 	</header>
 	<div class="container">
 		<div class="container-item">
@@ -63,7 +73,7 @@
               					<a href="./forms/registros/datos.php?dni=<?php echo $key['dni']?>">
               					<button class="btn btn-success">Datos del paciente</button>
               					</a>
-								  <a href="./reporte/reporteDieta.php?dni=<?php echo $key['dni']?>">
+								  <a href="./reporte/index.php?dni=<?php echo $key['dni']?>">
               					<button class="btn btn-success">Reporte</button>
               					</a>
 							  </td>

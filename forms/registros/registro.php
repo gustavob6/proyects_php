@@ -1,4 +1,12 @@
 <?php 
+session_start();
+$id = $_SESSION['id_usuario'];
+  
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ./login/login.php');
+  }
+
 require_once("../../database/database.php");
 require_once("../../database/consultas.php");
 
@@ -12,11 +20,11 @@ if(isset($_POST["add"])){
     $masa = $_POST["masa"];
     $actividad = $_POST["activity"];
 
-    $sql="INSERT INTO `PACIENTES` VALUES (:dni,:name1,:last1,:nac,:peso,:altura,:masa,:actividad)";
+    $sql="INSERT INTO `PACIENTES` VALUES (:dni,:name1,:last1,:nac,:peso,:altura,:masa,:actividad,:id)";
     $result=$conn->prepare($sql);  
     $result->execute(array(":dni"=>$dni,":name1"=>$name,
                             ":last1"=>$last,":nac"=>$fecha,":peso"=>$peso,":altura"=>$altura,
-                            ":masa"=>$masa,":actividad"=>$actividad));
+                            ":masa"=>$masa,":actividad"=>$actividad,":id"=>$id));
     header("Location:../../index.php");
   }   
 ?>
@@ -26,11 +34,19 @@ if(isset($_POST["add"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./custom.css">
+    <link rel="stylesheet" href="./main.css">
     <title>Formulario</title>
 </head>
 <body>
-    <div class="container">
+    <header class="main-header1">
+			<a class="text-header" href="#">
+				<span class="site-name">Nutricion 2.0</span>
+			</a>
+			<a class="text-header1" href="../../index.php">
+			 <span class="site-name">Volver</span>
+            </a> 
+	</header>
+    <div class="container1">
                 <form class="form" name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
                     <div class="item">
                         <input type="number" name="dni"class="form-control" min="1111111" max="99999999" required
@@ -63,11 +79,6 @@ if(isset($_POST["add"])){
                         <button type="submit" name="add"class="button btnCreate">Registrar Paciente</button>
                     </div>
                 </form>
-                <div class="container-btn">
-                <a href="../../index.php">
-                    <button class="button">Volver</button>
-                </a>
-                </div>
     </div>
 </body>
 </html>

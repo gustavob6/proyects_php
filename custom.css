@@ -1,12 +1,14 @@
 
 .main-header {
+  
 	background: #393a39;
 	color: white;
 	height: 60px;
 	width: 100%; 
 	left: 0; 
 	top: 0; 
-	position: fixed; 
+	position: fixed;
+  
 }	
 
 .main-header a {
@@ -26,7 +28,22 @@
 }
 	
 .text-header .site-name {
-		
+		font-weight: 700;
+		font-size: 1.1em;
+}
+.text-header1 {
+	float: right;
+  margin-top: 4px;
+  margin-right: 20px;
+	padding: 15px 0 0 20px;
+	text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.text-header1:hover{
+  color:#0d9d47;
+}
+	
+.text-header1 .site-name {
 		font-weight: 700;
 		font-size: 1.1em;
 }
@@ -172,3 +189,4 @@ a {
     padding: 20px 30px;
     border-bottom: 3px solid #f8f9fd;
     font-size: 14px; }
+

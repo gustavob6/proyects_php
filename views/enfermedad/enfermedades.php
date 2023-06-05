@@ -33,10 +33,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="enf.css">
+    <link rel="stylesheet" href="enfer.css">
     <title>Lista de enfermedades</title>
 </head>
 <body>
+      <header class="main-header">
+                <a class="text-header" href="../../index.php">
+                    <span class="site-name">Nutricion 2.0</span>
+                </a>
+                <a class="text-header1" href="../../forms/registros/datos.php?dni=<?php echo $dni?>">
+                <span class="site-name">Volver</span>
+                </a> 
+        </header>
     <div class="container">
         <div class="lista">
             <ul class="list">
@@ -78,9 +86,6 @@
                 <button type="submit" class="btn" name="add">Añadir</button>
             </div>
         </form>
-        <a href="../../forms/registros/datos.php?dni=<?php echo $dni?>">
-            <button class="btn btn-create">Volver</button>
-        </a>
     </div>
 </body>
 </html>
