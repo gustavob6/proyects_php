@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `nutricionista1` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `nutricionista1`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: nutricionista1
@@ -141,7 +143,7 @@ CREATE TABLE `dietas` (
 
 LOCK TABLES `dietas` WRITE;
 /*!40000 ALTER TABLE `dietas` DISABLE KEYS */;
-INSERT INTO `dietas` VALUES (27838471,1,1,9,150,'2023-05-10 17:32:33'),(27838471,1,1,10,200,'2023-05-10 17:32:33'),(27838471,1,2,2,250,'2023-05-10 17:32:33'),(27838471,1,2,11,200,'2023-05-10 17:32:33'),(27838471,1,3,6,200,'2023-05-10 17:32:33'),(27838471,1,3,7,150,'2023-05-10 17:32:33'),(27838471,2,1,1,400,'2023-05-10 17:34:08'),(27838471,2,1,14,100,'2023-05-10 17:34:08'),(27838471,2,2,4,300,'2023-05-10 17:34:08'),(27838471,2,2,11,300,'2023-05-10 17:34:08'),(27838471,2,3,13,500,'2023-05-10 17:34:08'),(27838471,2,3,15,150,'2023-05-10 17:34:08'),(27838471,3,1,3,450,'2023-05-10 17:34:50'),(27838471,3,1,9,250,'2023-05-10 17:34:50'),(27838471,3,2,5,150,'2023-05-10 17:34:50'),(27838471,3,2,8,75,'2023-05-10 17:34:50'),(27838471,3,3,10,150,'2023-05-10 17:34:50'),(27838471,3,3,12,100,'2023-05-10 17:34:50'),(27838471,4,1,5,200,'2023-05-10 17:39:59'),(27838471,4,1,7,450,'2023-05-10 17:39:59'),(27838471,4,2,2,250,'2023-05-10 17:39:59'),(27838471,4,2,14,140,'2023-05-10 17:39:59'),(27838471,4,3,8,150,'2023-05-10 17:39:59'),(27838471,4,3,12,250,'2023-05-10 17:39:59'),(27838471,5,1,1,400,'2023-05-10 17:42:45'),(27838471,5,1,6,150,'2023-05-10 17:42:45'),(27838471,5,2,2,232,'2023-05-10 17:42:45'),(27838471,5,2,3,150,'2023-05-10 17:42:45'),(27838471,5,3,11,150,'2023-05-10 17:42:45'),(27838471,5,3,12,100,'2023-05-10 17:42:45'),(27838471,6,1,4,200,'2023-05-10 17:49:44'),(27838471,6,1,9,150,'2023-05-10 17:49:44'),(27838471,6,2,2,200,'2023-05-10 17:49:44'),(27838471,6,2,11,350,'2023-05-10 17:49:44'),(27838471,6,3,14,100,'2023-05-10 17:49:44'),(27838471,6,3,15,150,'2023-05-10 17:49:44'),(27838471,7,1,2,150,'2023-05-10 18:11:04'),(27838471,7,1,6,551,'2023-05-10 18:11:04'),(27838471,7,2,3,500,'2023-05-10 18:11:04'),(27838471,7,2,10,11,'2023-05-10 18:11:04'),(27838471,7,3,8,100,'2023-05-10 18:11:04'),(27838471,7,3,14,555,'2023-05-10 18:11:04');
+INSERT INTO `dietas` VALUES (10574649,1,1,2,100,'2023-06-05 10:20:12'),(10574649,1,1,4,150,'2023-06-05 10:20:12'),(10574649,1,2,6,140,'2023-06-05 10:20:12'),(10574649,1,2,10,85,'2023-06-05 10:20:12'),(10574649,1,3,13,120,'2023-06-05 10:20:12'),(10574649,1,3,15,50,'2023-06-05 10:20:12'),(10574649,2,1,1,30,'2023-06-05 12:12:40'),(10574649,2,1,6,50,'2023-06-05 12:12:40'),(10574649,2,2,9,150,'2023-06-05 12:12:40'),(10574649,2,2,10,200,'2023-06-05 12:12:40'),(10574649,2,3,12,50,'2023-06-05 12:12:40'),(10574649,2,3,15,85,'2023-06-05 12:12:40');
 /*!40000 ALTER TABLE `dietas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +170,7 @@ CREATE TABLE `enfermedad_paciente` (
 
 LOCK TABLES `enfermedad_paciente` WRITE;
 /*!40000 ALTER TABLE `enfermedad_paciente` DISABLE KEYS */;
-INSERT INTO `enfermedad_paciente` VALUES (27838471,3);
+INSERT INTO `enfermedad_paciente` VALUES (10574649,2);
 /*!40000 ALTER TABLE `enfermedad_paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,6 +199,24 @@ INSERT INTO `enfermedades` VALUES (1,'Diabetes'),(2,'Obesidad'),(3,'Anemia'),(4,
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `new_view`
+--
+
+DROP TABLE IF EXISTS `new_view`;
+/*!50001 DROP VIEW IF EXISTS `new_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `new_view` AS SELECT 
+ 1 AS `FECHA`,
+ 1 AS `DIA`,
+ 1 AS `TIPO`,
+ 1 AS `ALIMENTO`,
+ 1 AS `VITAMINAS`,
+ 1 AS `NUTRIENTES`,
+ 1 AS `GRAMOS`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `pacientes`
 --
 
@@ -212,7 +232,10 @@ CREATE TABLE `pacientes` (
   `altura` int NOT NULL,
   `masa_muscular` int NOT NULL,
   `actividad_fisica` varchar(45) NOT NULL,
-  PRIMARY KEY (`dni`)
+  `id_usuario` int NOT NULL,
+  PRIMARY KEY (`dni`),
+  KEY `id_usuario_idx` (`id_usuario`),
+  CONSTRAINT `id` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -222,7 +245,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (27838471,'Gustavo','Bustamante','2000-07-06',65,172,25,'Futbol');
+INSERT INTO `pacientes` VALUES (10574649,'Gustavo JR','Bustamante','1969-02-07',90,185,15,'Futbol',3),(13326937,'Yasmin','Acosta','1997-06-05',82,182,20,'Ciclismo',1),(27838471,'Gustavo','Bustamante','2000-06-07',60,172,28,'Correr',1);
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,6 +271,32 @@ LOCK TABLES `tipo_comida` WRITE;
 /*!40000 ALTER TABLE `tipo_comida` DISABLE KEYS */;
 INSERT INTO `tipo_comida` VALUES (1,'Desayuno'),(2,'Almuerzo'),(3,'Cena');
 /*!40000 ALTER TABLE `tipo_comida` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'gustavob6','67*67*Gb'),(3,'admin','1234');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -317,6 +366,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `new_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `new_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `new_view` AS select `dietas`.`fecha` AS `FECHA`,`dia`.`nombre` AS `DIA`,`tipo_comida`.`nombre` AS `TIPO`,`alimentos`.`nombre` AS `ALIMENTO`,`alimentos`.`vitaminas` AS `VITAMINAS`,`alimentos`.`aporte_nutricional` AS `NUTRIENTES`,`dietas`.`gramos` AS `GRAMOS` from ((((`dietas` join `pacientes` on((`dietas`.`id_dieta` = `pacientes`.`dni`))) join `dia` on((`dia`.`id_dia` = `dietas`.`dia_id`))) join `tipo_comida` on((`dietas`.`id_tipo` = `tipo_comida`.`id_tipo`))) join `alimentos` on((`dietas`.`id_alimento` = `alimentos`.`id_alimento`))) where (((`dia`.`nombre` = 'Lunes') or (`dia`.`nombre` = 'Martes') or (`dia`.`nombre` = 'Miercoles') or (`dia`.`nombre` = 'Jueves') or (`dia`.`nombre` = 'Viernes') or (`dia`.`nombre` = 'Sabado') or (`dia`.`nombre` = 'Domingo')) and (`pacientes`.`dni` = 27838471)) order by `dia`.`id_dia` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `verenfermedades`
 --
 
@@ -343,4 +410,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-10 18:13:27
+-- Dump completed on 2023-06-05 18:22:00
