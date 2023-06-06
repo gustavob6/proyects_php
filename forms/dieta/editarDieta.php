@@ -92,10 +92,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Modificar Dieta</title>
 </head>
 <body>
+<header class="main-header">
+	<a class="text-header" href="#">
+		<span class="site-name">Nutricion 2.0</span>
+	</a>
+	<a class="text-header1" href="../../views/dieta/verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
+		<span class="site-name">Volver</span>
+    </a> 
+</header>
 <form name="form1" action="editarDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>" method="post">
 <div class="container">
 <h3><?php echo $dia ?></h3>
@@ -237,13 +245,5 @@
     </div>
     </div>
 </form>
-<div class="container-btn">
-        <a href="../../index.php">
-         <button class="btn">Pagina Principal</button>
-        </a>
-        <a href="../../views/dieta/verDieta.php?dni=<?php echo $dni?>&dia=<?php echo $dia?>">
-         <button class="btn">Volver</button>
-        </a>
-        </div>
 </body>
 </html>

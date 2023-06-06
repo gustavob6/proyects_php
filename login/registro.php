@@ -4,16 +4,32 @@
      if (isset($_SESSION['user_id'])) {
         header('Location: ../index.php');
     }		
-	
+    $alert = false;
+    $message = " ";
     require_once("../database/database.php");
-    if(isset($_POST['submit'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $sql="INSERT INTO `usuarios` VALUES (NULL,:username,:password)";
-        $result=$conn->prepare($sql);  
-        $result->execute(array(":username"=>$username,":password"=>$password));
-        header("Location:login.php");
+    if (!empty($_POST['username']) && !empty($_POST['password'])) {
+      $sql = "SELECT * FROM USUARIOS WHERE username = :username";
+      $records = $conn->prepare($sql);
+      $records->bindParam(':username', $_POST['username']);
+      $records->execute();
+      $results = $records->fetch(PDO::FETCH_ASSOC);
+      $message = ' ';
+      
+      if ($results > 0 ) {
+        $message = 'Usuario ya existente';
+        $alert = true;
+      } else {
+        if(isset($_POST['submit'])){
+          $username = $_POST['username'];
+          $password = $_POST['password'];
+          $sql="INSERT INTO `usuarios` VALUES (NULL,:username,:password)";
+          $result=$conn->prepare($sql);  
+          $result->execute(array(":username"=>$username,":password"=>$password));
+          header("Location:login.php");
+      }
+      }
     }
+    
 
 ?>
 <!DOCTYPE html>
@@ -47,6 +63,11 @@
               <button type="submit" name="submit" class="button">Registrarse</button>
             </div>
         </form>
+        <div class="text">
+          <?php if($alert): ?>
+            <p class="alert"><?php echo $message?></p>
+          <?php endif;?>  
+        </div>
     </div>
 </body>
 </html>

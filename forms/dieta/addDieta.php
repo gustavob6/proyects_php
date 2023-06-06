@@ -114,10 +114,18 @@ if(isset($_POST["add"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Añadir Dieta</title>
 </head>
 <body>
+<header class="main-header">
+	<a class="text-header" href="#">
+		<span class="site-name">Nutricion 2.0</span>
+	</a>
+	<a class="text-header1" href="../../index.php">
+		<span class="site-name">Volver</span>
+    </a> 
+</header>
 <?php if($band):?> 
 <form name="form1" action="addDieta.php?dni=<?php echo $dni?>" method="post">
 <div class="container">
@@ -261,18 +269,10 @@ if(isset($_POST["add"])){
     </div>
     </div>
 </form>
-<div class="container-btn">
-<a href="../../index.php">
-         <button class="btn">Pagina Principal</button>
-</a>
 </div>
 <?php else:?>
-    
     <div class="container-btn">
-    <h3>Ya registro todos los dias</h3>
-        <a href="../../index.php">
-         <button class="btn">Pagina Principal</button>
-        </a>
+        <h3>Ya registro todos los dias</h3>
     </div>
 <?php endif;?>
 

@@ -6,27 +6,41 @@ $id = $_SESSION['id_usuario'];
 if (!isset($_SESSION['user_id'])) {
     header('Location: ./login/login.php');
   }
-
+$alert = false;
+$message = " ";
 require_once("../../database/database.php");
 require_once("../../database/consultas.php");
 
-if(isset($_POST["add"])){
-    $dni = $_POST["dni"];
-    $name = $_POST["name"];
-    $last = $_POST["last"];
-    $fecha = $_POST["nac"];
-    $peso = $_POST["weight"];
-    $altura = $_POST["height"];
-    $masa = $_POST["masa"];
-    $actividad = $_POST["activity"];
-
-    $sql="INSERT INTO `PACIENTES` VALUES (:dni,:name1,:last1,:nac,:peso,:altura,:masa,:actividad,:id)";
-    $result=$conn->prepare($sql);  
-    $result->execute(array(":dni"=>$dni,":name1"=>$name,
-                            ":last1"=>$last,":nac"=>$fecha,":peso"=>$peso,":altura"=>$altura,
-                            ":masa"=>$masa,":actividad"=>$actividad,":id"=>$id));
-    header("Location:../../index.php");
-  }   
+if (!empty($_POST['dni'])) {
+    $sql = "SELECT * FROM PACIENTES WHERE dni = :dni";
+    $records = $conn->prepare($sql);
+    $records->bindParam(':dni', $_POST['dni']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+    
+    if ($results > 0 ) {
+      $message = 'Cedula ya existente';
+      $alert = true;
+    } else {
+        if(isset($_POST["add"])){
+            $dni = $_POST["dni"];
+            $name = $_POST["name"];
+            $last = $_POST["last"];
+            $fecha = $_POST["nac"];
+            $peso = $_POST["weight"];
+            $altura = $_POST["height"];
+            $masa = $_POST["masa"];
+            $actividad = $_POST["activity"];
+        
+            $sql="INSERT INTO `PACIENTES` VALUES (:dni,:name1,:last1,:nac,:peso,:altura,:masa,:actividad,:id)";
+            $result=$conn->prepare($sql);  
+            $result->execute(array(":dni"=>$dni,":name1"=>$name,
+                                    ":last1"=>$last,":nac"=>$fecha,":peso"=>$peso,":altura"=>$altura,
+                                    ":masa"=>$masa,":actividad"=>$actividad,":id"=>$id));
+            header("Location:../../index.php");
+          }   
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +48,8 @@ if(isset($_POST["add"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
-    <title>Formulario</title>
+    <link rel="stylesheet" href="./mains.css">
+    <title>Formulario de Paciente</title>
 </head>
 <body>
     <header class="main-header1">
@@ -79,6 +93,11 @@ if(isset($_POST["add"])){
                         <button type="submit" name="add"class="button btnCreate">Registrar Paciente</button>
                     </div>
                 </form>
+                <div class="text">
+                    <?php if($alert): ?>
+                     <p class="alert"><?php echo $message?></p>
+                    <?php endif;?>  
+                </div>
     </div>
 </body>
 </html>
